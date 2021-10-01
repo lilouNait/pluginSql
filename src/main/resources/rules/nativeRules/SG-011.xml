@@ -1,0 +1,24 @@
+<rule>
+    <key>SG-011</key>
+    <name>GRANT block missing</name>
+    <description>Stored procedures are usually executed by application logins. For this to happen,
+        you need to GRANT them to be executed by the proper role(s).</description>
+    <tag>Reliability</tag>
+    <debt>2min</debt>
+    <ruleImplementation>
+        <ruleViolationMessage>
+            GRANT block missing
+        </ruleViolationMessage>
+        <violatingRulesCodeExamples>
+            <ruleCodeExample>
+                CREATE OR ALTER PROCEDURE [dbo].[my_proc]
+            </ruleCodeExample>
+        </violatingRulesCodeExamples>
+        <compliantRulesCodeExamples>
+            <ruleCodeExample>
+                CREATE OR ALTER PROCEDURE [dbo].[my_proc] ...
+                GRANT EXECUTE ON [dbo].[my_proc] TO [db_FrontOffice];
+            </ruleCodeExample>
+        </compliantRulesCodeExamples>
+    </ruleImplementation>
+</rule>

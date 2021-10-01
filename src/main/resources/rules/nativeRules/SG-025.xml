@@ -1,0 +1,26 @@
+<rule>
+    <key>SG-025</key>
+    <name>@@ERROR used</name>
+    <description>The @@ERROR keyword is forbidden, as it will return incorrect values when triggers are used.</description>
+    <tag>Reliability</tag>
+    <debt>2min</debt>
+    <severity>MINOR</severity>
+    <ruleImplementation>
+        <ruleViolationMessage>
+            Unexpected @@ERROR keyword found
+        </ruleViolationMessage>
+        <violatingRulesCodeExamples>
+            <ruleCodeExample>
+                SELECT @@ERROR;
+            </ruleCodeExample>
+        </violatingRulesCodeExamples>
+        <compliantRulesCodeExamples>
+            <ruleCodeExample>
+                SELECT SCOPE_IDENTITY();
+            </ruleCodeExample>
+        </compliantRulesCodeExamples>
+    </ruleImplementation>
+
+
+
+</rule>

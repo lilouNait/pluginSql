@@ -1,0 +1,34 @@
+<rule>
+    <key>SG-003</key>
+    <name>SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED</name>
+    <description>Set at the beginning of SP, this will allow dirty read for all stored procedure.</description>
+    <tag>Reliability</tag>
+    <debt>2min</debt>
+    <contextRegex>.+</contextRegex>
+    <listIssuesRegex>
+        <regex>SET\s*NOCOUNT\s*ON;\s*SET\s*XACT_ABORT\s*ON;\s*SET\s*TRANSACTION\s*ISOLATION\s*LEVEL\s*READ\s*UNCOMMITTED</regex>
+    </listIssuesRegex>
+    <conditionContainedInFileName></conditionContainedInFileName>
+    <conditionContainedInFile>CREATE\s*OR\s*ALTER\s*PROCEDURE\s*|CREATE\s*OR\s*ALTER\s*PROC\s*</conditionContainedInFile>
+    <behaviourIfConditionFileFound>FAIL_IF_NOT_FOUND</behaviourIfConditionFileFound>
+    <ruleImplementation>
+        <ruleViolationMessage>
+            SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+        </ruleViolationMessage>
+        <violatingRulesCodeExamples>
+            <ruleCodeExample>
+                SET XACT_ABORT ON;
+                SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+                CREATE OR ALTER PROCEDURE [dbo].[my_proc]
+            </ruleCodeExample>
+        </violatingRulesCodeExamples>
+        <compliantRulesCodeExamples>
+            <ruleCodeExample>
+                CREATE OR ALTER PROCEDURE [dbo].[my_proc]
+            </ruleCodeExample>
+        </compliantRulesCodeExamples>
+    </ruleImplementation>
+
+
+
+</rule>

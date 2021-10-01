@@ -1,0 +1,37 @@
+<rule>
+    <key>SG-014</key>
+    <name>Unexpected TRY block found in script</name>
+    <description>Unlike stored procedures, TRY/CATCH blocks are forbidden in scripts, unless specifically approved by a DBA.
+        Since release scripts are manually run, we do want to know if any error happen.
+        TRY/CATCH blocks may prevent us to see that an error happened.</description>
+    <tag>Reliability</tag>
+    <debtRemediationFunctionCoefficient>2min</debtRemediationFunctionCoefficient>
+    <contextRegex>\s+TRY\s+|^TRY\s+|^TRY$|\s+TRY$</contextRegex>
+    <conditionContainedInFile></conditionContainedInFile>
+    <conditionContainedInFileName>SCRIPT</conditionContainedInFileName>
+    <behaviourIfConditionFileFound></behaviourIfConditionFileFound>
+    <listIssuesRegex>
+        <regex>\s+TRY\s+|^TRY\s+|^TRY$|\s+TRY$</regex>
+    </listIssuesRegex>
+    <severity>MINOR</severity>
+    <ruleImplementation>
+        <ruleViolationMessage>Unexpected TRY block found in script</ruleViolationMessage>
+        <violatingRulesCodeExamples>
+            <ruleCodeExample>
+                BEGIN TRY
+                { sql_statement | statement_block }
+                END TRY
+                BEGIN CATCH
+                [ { sql_statement | statement_block } ]
+                END CATCH
+                [ ; ]
+            </ruleCodeExample>
+        </violatingRulesCodeExamples>
+        <compliantRulesCodeExamples>
+            <ruleCodeExample>
+                CREATE OR ALTER PROCEDURE [dbo].[my_proc]
+                AS BEGIN TRY
+            </ruleCodeExample>
+        </compliantRulesCodeExamples>
+    </ruleImplementation>
+</rule>

@@ -1,0 +1,17 @@
+<rule>
+    <key>SG-027</key>
+    <name>THROW must be preceded by a semicolon</name>
+    <description>The statement preceding a THROW statement must always be ended with a semicolon.</description>
+    <tag>Reliability</tag>
+    <debt>2min</debt>
+    <severity>MINOR</severity>
+    <ruleImplementation>
+        <ruleViolationMessage>THROW must be preceded by a semicolon</ruleViolationMessage>
+        <violatingRulesCodeExamples>
+            <ruleCodeExample>THROW</ruleCodeExample>
+        </violatingRulesCodeExamples>
+        <compliantRulesCodeExamples>
+            <ruleCodeExample>THROW;</ruleCodeExample>
+        </compliantRulesCodeExamples>
+    </ruleImplementation>
+</rule>

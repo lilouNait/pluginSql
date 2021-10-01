@@ -1,0 +1,17 @@
+<rule>
+    <key>SG-002</key>
+    <name>Unexpected USE keyword found</name>
+    <description>Using the USE keyword in SQL scripts (including stored procedures, etc) is prohibited.</description>
+    <tag>Reliability</tag>
+    <debt>2min</debt>
+    <severity>MINOR</severity>
+    <ruleImplementation>
+        <ruleViolationMessage>Avoid USE [Database] at the beginning of the script.</ruleViolationMessage>
+        <violatingRulesCodeExamples>
+            <ruleCodeExample>use [Betclick] SELECT TOP 10 * FROM dbo.users;</ruleCodeExample>
+        </violatingRulesCodeExamples>
+        <compliantRulesCodeExamples>
+            <ruleCodeExample>SELECT TOP 10 * FROM dbo.users;</ruleCodeExample>
+        </compliantRulesCodeExamples>
+    </ruleImplementation>
+</rule>

@@ -1,0 +1,36 @@
+<rule>
+    <key>SG-006</key>
+    <name>GRANT STATEMENTS should not be separated by a GO</name>
+    <description>When there are several GRANT statements for stored procedure (function, etc), they must not be separated by GO statements.
+        the GO separator must be written only after the last GRANT statement.</description>
+    <tag>Reliability</tag>
+    <debt>2min</debt>
+    <contextRegex>GRANT\s*.*?TO\s*\S*\s*GO\s*GRANT</contextRegex>
+    <listIssuesRegex>
+        <regex>GRANT\s*.*?TO\s*\S*\s*GO\s*GRANT</regex>
+    </listIssuesRegex>
+    <severity>MINOR</severity>
+    <ruleImplementation>
+        <ruleViolationMessage>
+            GRANT STATEMENTS should not be separated by a GO
+        </ruleViolationMessage>
+        <violatingRulesCodeExamples>
+            <ruleCodeExample>
+                ORDER BY PSEUDO
+                GRANT EXECUTE ON [dbo].[common_users_get] TO [db_FrontOffice];
+                GO
+                GRANT EXECUTE ON [dbo].[common_users] TO [db_BackOffice];
+                GO
+            </ruleCodeExample>
+        </violatingRulesCodeExamples>
+        <compliantRulesCodeExamples>
+            <ruleCodeExample>
+                ORDER BY PSEUDO
+                GO
+                GRANT EXECUTE ON [dbo].[common_users] TO [db_FrontOffice];
+                GRANT EXECUTE ON [dbo].[common_users_get] TO [db_BackOffice];
+                GO
+            </ruleCodeExample>
+        </compliantRulesCodeExamples>
+    </ruleImplementation>
+</rule>

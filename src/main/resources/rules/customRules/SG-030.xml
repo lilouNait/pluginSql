@@ -1,0 +1,28 @@
+<rule>
+    <key>SG-030</key>
+    <name>Avoid existence test and drop on temp table</name>
+    <description>This rule prevent from dropping temp table in code.
+        SQL engine is preferred to manage temp tables cleaning.</description>
+    <tag>Reliability</tag>
+    <debt>2min</debt>
+    <contextRegex>DROP\s*TABLE\s*#TEMP</contextRegex>
+    <listIssuesRegex>
+        <regex>DROP\s*TABLE\s*#TEMP</regex>
+    </listIssuesRegex>
+    <ruleImplementation>
+        <ruleViolationMessage>
+            Avoid existence test and drop on temp table
+        </ruleViolationMessage>
+        <violatingRulesCodeExamples>
+            <ruleCodeExample>
+                This example of statement is denied
+                DROP TABLE #tmp_table
+            </ruleCodeExample>
+        </violatingRulesCodeExamples>
+        <compliantRulesCodeExamples>
+            <ruleCodeExample>
+                SQL engine is preferred to manage temp tables cleaning.
+            </ruleCodeExample>
+        </compliantRulesCodeExamples>
+    </ruleImplementation>
+</rule>

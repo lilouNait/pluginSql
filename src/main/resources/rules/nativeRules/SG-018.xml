@@ -1,0 +1,23 @@
+<rule>
+    <key>SG-018</key>
+    <name>CREATE VIEW block is not compliant</name>
+    <description>The line where the view is declared must always be written the same way</description>
+    <tag>Reliability</tag>
+    <debt>2min</debt>
+    <severity>MINOR</severity>
+    <ruleImplementation>
+        <ruleViolationMessage>
+            CREATE VIEW block is not compliant
+        </ruleViolationMessage>
+        <violatingRulesCodeExamples>
+            <ruleCodeExample>
+                CREATE VIEW myView
+            </ruleCodeExample>
+        </violatingRulesCodeExamples>
+        <compliantRulesCodeExamples>
+            <ruleCodeExample>
+                CREATE VIEW [dbo].[vMyView]
+            </ruleCodeExample>
+        </compliantRulesCodeExamples>
+    </ruleImplementation>
+</rule>

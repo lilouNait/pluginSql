@@ -1,0 +1,17 @@
+<rule>
+    <key>SG-024</key>
+    <name>@@IDENTITY used</name>
+    <description>The @@IDENTITY keyword is forbidden, as it will return incorrect values when triggers are used.</description>
+    <tag>Reliability</tag>
+    <debt>2min</debt>
+    <severity>MINOR</severity>
+    <ruleImplementation>
+        <ruleViolationMessage>Unexpected @@IDENTITY keyword found</ruleViolationMessage>
+        <violatingRulesCodeExamples>
+            <ruleCodeExample>SELECT @@IDENTITY;</ruleCodeExample>
+        </violatingRulesCodeExamples>
+        <compliantRulesCodeExamples>
+            <ruleCodeExample>SELECT SCOPE_IDENTITY();</ruleCodeExample>
+        </compliantRulesCodeExamples>
+    </ruleImplementation>
+</rule>

@@ -1,0 +1,25 @@
+<rule>
+    <key>SG-022</key>
+    <name>Schema Object name is invalid in GRANT block</name>
+    <description>The object and schema name referenced in the GRANT block must match those in the file name.</description>
+    <tag>Reliability</tag>
+    <debt>2min</debt>
+    <severity>MINOR</severity>
+    <ruleImplementation>
+        <ruleViolationMessage>
+            Schema Object name is invalid in GRANT block
+        </ruleViolationMessage>
+        <violatingRulesCodeExamples>
+            <ruleCodeExample>
+                Name file: OfferingProviders.ProviderSports_Get_ByProviderId.sql
+                GRANT EXECUTE ON [offering].[selection_applications] TO [LoadTestUser];
+            </ruleCodeExample>
+        </violatingRulesCodeExamples>
+        <compliantRulesCodeExamples>
+            <ruleCodeExample>
+                Name file: OfferingProviders.ProviderSports_Get_ByProviderId.sql
+                GRANT EXECUTE ON [OfferingProviders].[ProviderSports_Get_ByProviderId] TO [LoadTestUser];
+            </ruleCodeExample>
+        </compliantRulesCodeExamples>
+    </ruleImplementation>
+</rule>

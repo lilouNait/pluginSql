@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="rule" type="ruleType"/>
+    <xs:complexType name="listIssuesRegexType">
+        <xs:sequence>
+            <xs:element type="xs:string" name="regex"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="violatingRulesCodeExamplesType">
+        <xs:sequence>
+            <xs:element type="xs:string" name="ruleCodeExample"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="compliantRulesCodeExamplesType">
+        <xs:sequence>
+            <xs:element type="xs:string" name="ruleCodeExample"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ruleImplementationType">
+        <xs:sequence>
+            <xs:element type="xs:string" name="ruleViolationMessage"/>
+            <xs:element type="violatingRulesCodeExamplesType" name="violatingRulesCodeExamples"/>
+            <xs:element type="compliantRulesCodeExamplesType" name="compliantRulesCodeExamples"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ruleType">
+        <xs:sequence>
+            <xs:element type="xs:string" name="key"/>
+            <xs:element type="xs:string" name="name"/>
+            <xs:element type="xs:string" name="description"/>
+            <xs:element type="xs:string" name="tag"/>
+            <xs:element type="xs:string" name="debtRemediationFunctionCoefficient"/>
+            <xs:element type="xs:string" name="contextRegex"/>
+            <xs:element type="xs:string" name="conditionContainedInFile"/>
+            <xs:element type="xs:string" name="conditionContainedInFileName"/>
+            <xs:element type="xs:string" name="behaviourIfConditionFileFound"/>
+            <xs:element type="listIssuesRegexType" name="listIssuesRegex"/>
+            <xs:element type="xs:string" name="severity"/>
+            <xs:element type="ruleImplementationType" name="ruleImplementation"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

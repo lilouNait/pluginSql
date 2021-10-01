@@ -1,0 +1,41 @@
+<rule>
+    <key>SG-001</key>
+    <name>Header missing</name>
+    <description>All scripts, stored procedure, functions, etc that you change must be tagged with the version you want the change to be part of.</description>
+    <tag>Reliability</tag>
+    <debt>2min</debt>
+    <severity>MINOR</severity>
+    <ruleImplementation>
+        <ruleViolationMessage>
+            Header Missing
+        </ruleViolationMessage>
+        <violatingRulesCodeExamples>
+            <ruleCodeExample>
+                /* Failure,
+                header is missing
+                */
+                SET ANSI_NULLS ON
+                GO
+                SET QUOTED_IDENTIFIER ON
+                GO
+            </ruleCodeExample>
+        </violatingRulesCodeExamples>
+        <compliantRulesCodeExamples>
+            <ruleCodeExample>
+                /*
+                Success
+                Header is present with
+                Following fields are mandatory :
+                Title
+                Description
+                Parameters
+                History
+                */
+                SET ANSI_NULLS ON
+                GO
+                SET QUOTED_IDENTIFIER ON
+                GO
+            </ruleCodeExample>
+        </compliantRulesCodeExamples>
+    </ruleImplementation>
+</rule>

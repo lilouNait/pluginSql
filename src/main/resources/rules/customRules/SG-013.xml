@@ -1,0 +1,44 @@
+<rule>
+    <key>SG-013</key>
+    <name>TRY missing before content</name>
+    <description>All stored procedures should begin with a BEGIN TRY block</description>
+    <tag>Reliability</tag>
+    <debt>2min</debt>
+    <contextRegex>(CREATE\s*OR\s*ALTER\s*PROCEDURE(.*?)\s*BEGIN\s*)(TRY)*</contextRegex>
+    <listIssuesRegex>
+        <regex>^(?!.*TRY).*$</regex>
+    </listIssuesRegex>
+    <ruleImplementation>
+        <ruleViolationMessage>
+            TRY missing before content
+        </ruleViolationMessage>
+        <violatingRulesCodeExamples>
+            <ruleCodeExample>
+                CREATE OR ALTER PROCEDURE
+                [Offer].[SG-012 - KO sportGateway_SportsIqLiveMarketMappings_Insert]
+                (
+                @MarketMappings [dbo].[SportsIqMarketMappings] READONLY,
+                "@ScopeId INT
+                )
+                AS
+                BEGIN
+            </ruleCodeExample>
+        </violatingRulesCodeExamples>
+        <compliantRulesCodeExamples>
+            <ruleCodeExample>
+                CREATE OR ALTER PROCEDURE
+                [Offer].[SG-012 - KO sportGateway_SportsIqLiveMarketMappings_Insert]
+                (
+                @MarketMappings [dbo].[SportsIqMarketMappings] READONLY,
+                @ScopeId INT
+                )
+                AS
+                BEGIN
+                TRY
+            </ruleCodeExample>
+        </compliantRulesCodeExamples>
+    </ruleImplementation>
+
+
+
+</rule>

@@ -1,0 +1,26 @@
+<rule>
+    <key>SG-021</key>
+    <name>Schema/Object name is invalid in CREATE or ALTER block in stored procedure</name>
+    <description>The object and schema name referenced in the CREATE or ALTER block must match those in the file name.
+        Be aware that the comparison is case sensitive. You might encounter the issue even if there's only a casing discrepancy.</description>
+    <tag>Reliability</tag>
+    <debt>2min</debt>
+    <severity>MINOR</severity>
+    <ruleImplementation>
+        <ruleViolationMessage>
+            Schema Object name is invalid in CREATE or ALTER block in stored procedure
+        </ruleViolationMessage>
+        <violatingRulesCodeExamples>
+            <ruleCodeExample>
+                Name file: OfferingProviders.ProviderSports_Get_ByProviderId.sql
+                Create procedure: create or alter procedure [Dbo].[myProcedure]
+            </ruleCodeExample>
+        </violatingRulesCodeExamples>
+        <compliantRulesCodeExamples>
+            <ruleCodeExample>
+                Name file: OfferingProviders.ProviderSports_Get_ByProviderId.sql
+                Create procedure: create or alter procedure [OfferingProviders].[ProviderSports_Get_ByProviderId]
+            </ruleCodeExample>
+        </compliantRulesCodeExamples>
+    </ruleImplementation>
+</rule>

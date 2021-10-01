@@ -1,0 +1,20 @@
+<rule>
+    <key>SG-007</key>
+    <name>PRINT statement must be commented out</name>
+    <description>Print statements are useful for debug. But we will not debug in production and they will generate useless network traffic, possibly on trans-country links.
+        You should ensure no PRINT will be executed in production, and get rid of them before checking in.</description>
+    <tag>Reliability</tag>
+    <debt>2min</debt>
+    <severity>MINOR</severity>
+    <ruleImplementation>
+        <ruleViolationMessage>PRINT statement must be commented out</ruleViolationMessage>
+        <violatingRulesCodeExamples>
+            <ruleCodeExample>PRINT 'My comment</ruleCodeExample>
+        </violatingRulesCodeExamples>
+        <compliantRulesCodeExamples>
+            <ruleCodeExample>/* PRINT 'My comment' */
+                OR
+                --PRINT 'My comment'</ruleCodeExample>
+        </compliantRulesCodeExamples>
+    </ruleImplementation>
+</rule>

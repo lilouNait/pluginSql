@@ -1,0 +1,28 @@
+<rule>
+    <key>SG-005</key>
+    <name>GRANT block must be preceded by a GO separator</name>
+    <description>The stored procedure (function, etc) body must be separated from the associated GRANT statements by a GO separator.
+        Go Statement must be written before the first Grant and after the last one.</description>
+    <tag>Reliability</tag>
+    <debtRemediationFunctionCoefficient>2min</debtRemediationFunctionCoefficient>
+    <ruleImplementation>
+        <ruleViolationMessage>GRANT block must be preceded by a GO separator</ruleViolationMessage>
+        <violatingRulesCodeExamples>
+            <ruleCodeExample>
+                ORDER BY EXAMPLE
+                GRANT EXECUTE ON [dbo].[common_users_get] TO [db_BackOffice];
+            </ruleCodeExample>
+        </violatingRulesCodeExamples>
+        <compliantRulesCodeExamples>
+            <ruleCodeExample>
+                ORDER BY EXAMPLECOMPLIANT
+                GO
+                GRANT EXECUTE ON [dbo].[common_users_get] TO [db_BackOffice];
+                GO
+            </ruleCodeExample>
+        </compliantRulesCodeExamples>
+    </ruleImplementation>
+
+
+
+</rule>

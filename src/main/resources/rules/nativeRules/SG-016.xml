@@ -1,0 +1,23 @@
+<rule>
+    <key>SG-016</key>
+    <name>CREATE FUNCTION block is not compliant</name>
+    <description>The line where the function is declared must always be written the same way, as defined in the code compliant.</description>
+    <tag>Reliability</tag>
+    <debt>2min</debt>
+    <severity>MINOR</severity>
+    <ruleImplementation>
+        <ruleViolationMessage>
+            CREATE function block is not compliant
+        </ruleViolationMessage>
+        <violatingRulesCodeExamples>
+            <ruleCodeExample>
+                CREATE FUNCTION myFunction
+            </ruleCodeExample>
+        </violatingRulesCodeExamples>
+        <compliantRulesCodeExamples>
+            <ruleCodeExample>
+                CREATE FUNCTION [dbo].[myFunction]
+            </ruleCodeExample>
+        </compliantRulesCodeExamples>
+    </ruleImplementation>
+</rule>

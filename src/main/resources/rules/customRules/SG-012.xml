@@ -1,0 +1,41 @@
+<rule>
+    <key>SG-012</key>
+    <name>AS missing before content</name>
+    <description>Stored procedures headers should be separated from their body by the AS keyword, on its own line of code.
+        Please replace its use with proper THROW calls.</description>
+    <tag>Reliability</tag>
+    <debtRemediationFunctionCoefficient>2min</debtRemediationFunctionCoefficient>
+    <contextRegex>CREATE\s*OR\s*ALTER\s*PROCEDURE(.*?)\s*BEGIN|CREATE\s*OR\s*ALTER\s*PROCEDURE(.*?)\s*BEGIN\s*TRY</contextRegex>
+    <listIssuesRegex>
+        <regex>\)\s*BEGIN|\]\s*BEGIN|\)\s*DECLARE.*?\s*DECLARE\s*.*?BEGIN</regex>
+    </listIssuesRegex>
+    <ruleImplementation>
+        <ruleViolationMessage>
+            AS missing before content
+        </ruleViolationMessage>
+        <violatingRulesCodeExamples>
+            <ruleCodeExample>
+                CREATE OR ALTER PROCEDURE [Offer].[SG-012 - KO sportGateway_SportsIqLiveMarketMappings_Insert]
+                (
+                @MarketMappings [dbo].[SportsIqMarketMappings] READONLY,
+                @ScopeId INT
+                )
+                BEGIN
+            </ruleCodeExample>
+        </violatingRulesCodeExamples>
+        <compliantRulesCodeExamples>
+            <ruleCodeExample>
+                CREATE OR ALTER PROCEDURE [Offer].[SG-012 - KO sportGateway_SportsIqLiveMarketMappings_Insert]
+                (
+                @MarketMappings [dbo].[SportsIqMarketMappings] READONLY,
+                @ScopeId INT
+                )
+                AS
+                BEGIN
+            </ruleCodeExample>
+        </compliantRulesCodeExamples>
+    </ruleImplementation>
+
+
+
+</rule>

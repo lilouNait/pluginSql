@@ -1,0 +1,27 @@
+<rule>
+    <key>SG-009</key>
+    <name>CREATE GRANT block is not compliant</name>
+    <description>The GRANT block should always be written the same way, as defined in the code compliant.
+        Here are the elements forbidden:
+        - Schema defined between brackets
+        - Every procedure name or function must be surrounded by brackets
+        - Semicolon at the end
+    </description>
+    <tag>Reliability</tag>
+    <debtRemediationFunctionCoefficient>2min</debtRemediationFunctionCoefficient>
+    <contextRegex>GRANT\s+EXEC\s+ON\s*.*?TO\s+\S*|GRANT\s+EXECUTE\s+ON\s*.*?TO\s+\S*</contextRegex>
+    <conditionContainedInFile>GRANT</conditionContainedInFile>
+    <behaviourIfConditionFileFound>FAIL_IF_NOT_FOUND</behaviourIfConditionFileFound>
+    <listIssuesRegex>
+        <regex>\s+ON\s*\[.*?\].\[.*?]\s*TO\s*\[.*?\];|\s+ON\s*TYPE::\[.*?\].\[.*?]\s*TO\s*\[.*?\];</regex>
+    </listIssuesRegex>
+    <ruleImplementation>
+        <ruleViolationMessage>CREATE GRANT block is not compliant</ruleViolationMessage>
+        <violatingRulesCodeExamples>
+            <ruleCodeExample>GRANT EXECUTE ON common_users_get TO example</ruleCodeExample>
+        </violatingRulesCodeExamples>
+        <compliantRulesCodeExamples>
+            <ruleCodeExample>GRANT EXECUTE ON [dbo].[common_users_get] TO [example];</ruleCodeExample>
+        </compliantRulesCodeExamples>
+    </ruleImplementation>
+</rule>

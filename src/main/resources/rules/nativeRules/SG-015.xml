@@ -1,0 +1,23 @@
+<rule>
+    <key>SG-015</key>
+    <name>CREATE PROCEDURE block is not compliant</name>
+    <description>The line where the stored procedure is declared must be written the same way</description>
+    <tag>Reliability</tag>
+    <debt>2min</debt>
+    <severity>MINOR</severity>
+    <ruleImplementation>
+        <ruleViolationMessage>
+            CREATE PROCEDURE block is not compliant
+        </ruleViolationMessage>
+        <violatingRulesCodeExamples>
+            <ruleCodeExample>
+                CREATE OR ALTER PROC [dbo].[my_proc]
+            </ruleCodeExample>
+        </violatingRulesCodeExamples>
+        <compliantRulesCodeExamples>
+            <ruleCodeExample>
+                CREATE OR ALTER PROCEDURE [dbo].[my_proc]
+            </ruleCodeExample>
+        </compliantRulesCodeExamples>
+    </ruleImplementation>
+</rule>

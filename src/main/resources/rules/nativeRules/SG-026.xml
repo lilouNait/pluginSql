@@ -1,0 +1,28 @@
+<rule>
+    <key>SG-026</key>
+    <name>Unexpected error_handle call found</name>
+    <description>Starting with SQL Server 2012, the THROW keyword has been introduced, meaning we don't have to use the customer error_handle procedure anymore.
+        Please replace its use with proper THROW calls.</description>
+    <tag>Reliability</tag>
+    <debt>2min</debt>
+    <severity>MINOR</severity>
+    <ruleImplementation>
+        <ruleViolationMessage>
+            Unexpected error_handle call found
+        </ruleViolationMessage>
+        <violatingRulesCodeExamples>
+            <ruleCodeExample>
+                BEGIN CATCH IF XACT_STATE() 0 ROLLBACK TRANSACTION
+                tEXEC dbo.error_handle
+                END CATCH
+            </ruleCodeExample>
+        </violatingRulesCodeExamples>
+        <compliantRulesCodeExamples>
+            <ruleCodeExample>
+                BEGIN CATCH IF XACT_STATE() 0 ROLLBACK TRANSACTION;
+                THROW;
+                END CATCH
+            </ruleCodeExample>
+        </compliantRulesCodeExamples>
+    </ruleImplementation>
+</rule>

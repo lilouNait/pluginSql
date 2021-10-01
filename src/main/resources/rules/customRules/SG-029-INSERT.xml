@@ -1,0 +1,25 @@
+<rule>
+    <key>SG-train</key>
+    <name>INSERT INTO block is not compliant</name>
+    <description>INSERT INTO table must have schema name and brackets
+    </description>
+    <tag>Reliability</tag>
+    <debtRemediationFunctionCoefficient>2min</debtRemediationFunctionCoefficient>
+    <contextRegex>INSERT\s*INTO\s+.*?\s+</contextRegex>
+    <conditionContainedInFile></conditionContainedInFile>
+    <conditionContainedInFileName></conditionContainedInFileName>
+    <behaviourIfConditionFileFound>FAIL_IF_NOT_FOUND</behaviourIfConditionFileFound>
+    <listIssuesRegex>
+        <regex>INSERT\s*INTO\s+\[.*?\]\.\[.*?\]</regex>
+    </listIssuesRegex>
+    <severity>MINOR</severity>
+    <ruleImplementation>
+        <ruleViolationMessage>INSERT block is not compliant</ruleViolationMessage>
+        <violatingRulesCodeExamples>
+            <ruleCodeExample>INSERT INTO XXX</ruleCodeExample>
+        </violatingRulesCodeExamples>
+        <compliantRulesCodeExamples>
+            <ruleCodeExample>INSERT INTO [db].[xx]</ruleCodeExample>
+        </compliantRulesCodeExamples>
+    </ruleImplementation>
+</rule>
